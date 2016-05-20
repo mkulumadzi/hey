@@ -52,6 +52,7 @@ class MainViewController: UIViewController {
             player.currentTime = 0
             stopPulse()
         } else {
+            print(mach_absolute_time())
             let interval = NSDate().timeIntervalSince1970
             let offset = interval % 0.625
             let _ = NSTimer.scheduledTimerWithTimeInterval(offset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
