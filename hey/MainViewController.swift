@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        tintedView.alpha = 0.2
+        tintedView.alpha = 0.0
         heyButton.hidden = true
     }
     
@@ -35,6 +35,7 @@ class MainViewController: UIViewController {
         }
         if player.playing {
             player.stop()
+            stopPulse()
         } else {
             player.play()
             pulse()
@@ -43,9 +44,18 @@ class MainViewController: UIViewController {
     
     func pulse() {
         weak var weakSelf = self
-        UIView.animateWithDuration(0.385, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
-           weakSelf?.tintedView.alpha = 0.0
+        UIView.animateWithDuration(0.3125, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
+           weakSelf?.tintedView.alpha = 0.2
         }, completion: nil)
+        
+        UIView.animateWithDuration(2.5, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
+            weakSelf?.view.backgroundColor = UIColor.heyBlue()
+            }, completion: nil)
+        
+    }
+    
+    func stopPulse() {
+        tintedView.layer.removeAllAnimations()
     }
     
 }
