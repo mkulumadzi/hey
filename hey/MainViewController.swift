@@ -29,14 +29,18 @@ class MainViewController: UIViewController {
     
     
     @IBAction func heyButtonTapped(sender: AnyObject) {
-        guard let player = heyPlayer.player else {
+//        guard let player = heyPlayer.player else {
+//            return
+//        }
+//        if heyPlayer.playing() {
+//            player.pause()
+//        } else {
+//            player.play()
+//        }
+        guard let player = heyPlayer.audioPlayer else {
             return
         }
-        if heyPlayer.playing() {
-            player.pause()
-        } else {
-            player.play()
-        }
+        player.play()
     }
     
     func playerItemEndReached(notificaiton: NSNotification) {

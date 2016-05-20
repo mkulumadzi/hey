@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import AudioPlayer
 
 private let audioFile = "heyLoop"
 
@@ -15,14 +16,20 @@ class HeyPlayer {
     
     
     var player:AVPlayer!
+    var audioPlayer:AudioPlayer!
     
     init() {
         if let path = NSBundle.mainBundle().pathForResource(audioFile, ofType: "aiff") {
             let url = NSURL(fileURLWithPath: path)
             self.player = AVPlayer(URL: url)
-        } else {
-            
         }
+        do {
+            try self.audioPlayer = AudioPlayer(fileName: "heyLoop.aiff")
+            self.audioPlayer.numberOfLoops = -1
+        } catch {
+            print(error)
+        }
+        
     }
     
     func playing() -> Bool {
