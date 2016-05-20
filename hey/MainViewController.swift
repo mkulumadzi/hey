@@ -23,32 +23,19 @@ class MainViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         heyPlayer = HeyPlayer()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.playerItemEndReached), name: AVPlayerItemDidPlayToEndTimeNotification, object: self.heyPlayer.player.currentItem)
         heyButton.hidden = false
     }
     
     
     @IBAction func heyButtonTapped(sender: AnyObject) {
-//        guard let player = heyPlayer.player else {
-//            return
-//        }
-//        if heyPlayer.playing() {
-//            player.pause()
-//        } else {
-//            player.play()
-//        }
         guard let player = heyPlayer.audioPlayer else {
             return
         }
-        player.play()
-    }
-    
-    func playerItemEndReached(notificaiton: NSNotification) {
-        guard let player = heyPlayer.player else {
-            return
+        if player.playing {
+            player.stop()
+        } else {
+            player.play()
         }
-        player.seekToTime(kCMTimeZero)
-        player.play()
     }
     
 }
