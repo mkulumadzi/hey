@@ -14,9 +14,11 @@ class MainViewController: UIViewController {
     
     var heyPlayer:HeyPlayer!
     @IBOutlet weak var heyButton: UIButton!
+    @IBOutlet weak var tintedView: UIView!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        tintedView.alpha = 0.2
         heyButton.hidden = true
     }
     
@@ -35,7 +37,15 @@ class MainViewController: UIViewController {
             player.stop()
         } else {
             player.play()
+            pulse()
         }
+    }
+    
+    func pulse() {
+        weak var weakSelf = self
+        UIView.animateWithDuration(0.385, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
+           weakSelf?.tintedView.alpha = 0.0
+        }, completion: nil)
     }
     
 }

@@ -17,6 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7P-OU-Y7S" userLabel="tintedView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhx-Hb-g0O">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="96"/>
@@ -32,12 +36,17 @@
                         <constraints>
                             <constraint firstItem="Rhx-Hb-g0O" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="NEm-Oz-CaK"/>
                             <constraint firstAttribute="trailing" secondItem="Rhx-Hb-g0O" secondAttribute="trailing" id="RHn-zP-zzo"/>
+                            <constraint firstAttribute="trailing" secondItem="V7P-OU-Y7S" secondAttribute="trailing" id="RT6-Be-gMC"/>
+                            <constraint firstItem="V7P-OU-Y7S" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="RyX-Eh-iAi"/>
+                            <constraint firstItem="V7P-OU-Y7S" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UQ0-AD-Kuc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rhx-Hb-g0O" secondAttribute="bottom" id="fFU-3k-LhK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="V7P-OU-Y7S" secondAttribute="bottom" id="m8d-ON-QcZ"/>
                             <constraint firstItem="Rhx-Hb-g0O" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sj4-FR-nbc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="heyButton" destination="Rhx-Hb-g0O" id="fGu-l8-b5G"/>
+                        <outlet property="tintedView" destination="V7P-OU-Y7S" id="Xhj-Pr-sup"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
