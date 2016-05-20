@@ -34,7 +34,10 @@ class MainViewController: UIViewController {
     }
     
     func formatView() {
-        let attributes = [NSFontAttributeName:UIFont.boldSystemFontOfSize(96.0), NSForegroundColorAttributeName: UIColor.whiteColor(), NSStrokeColorAttributeName:UIColor.blackColor(), NSStrokeWidthAttributeName:NSNumber(float: -3.0)]
+        guard let font = UIFont(name: "OpenSans-Bold", size: 96.0) else {
+            return
+        }
+        let attributes = [NSFontAttributeName:font, NSForegroundColorAttributeName: UIColor.whiteColor(), NSStrokeColorAttributeName:UIColor.blackColor(), NSStrokeWidthAttributeName:NSNumber(float: -3.0)]
         let title = NSAttributedString(string: "HEY!", attributes: attributes)
         heyButton.setAttributedTitle(title, forState: .Normal)
     }

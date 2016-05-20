@@ -21,6 +21,7 @@
 		D298A6131CEF826C0029161E /* heyLoop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = D298A6121CEF826C0029161E /* heyLoop.aiff */; };
 		D298A6151CEF8AC90029161E /* heyLoop.wav in Resources */ = {isa = PBXBuildFile; fileRef = D298A6141CEF8AC90029161E /* heyLoop.wav */; };
 		D2ED4F731CEFA8F00037D333 /* heyLoop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2ED4F721CEFA8F00037D333 /* heyLoop.mp3 */; };
+		D2FBAECD1CEFC1C800D5C766 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2FBAECC1CEFC1C400D5C766 /* OpenSans-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		D298A6121CEF826C0029161E /* heyLoop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = heyLoop.aiff; sourceTree = "<group>"; };
 		D298A6141CEF8AC90029161E /* heyLoop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heyLoop.wav; sourceTree = "<group>"; };
 		D2ED4F721CEFA8F00037D333 /* heyLoop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = heyLoop.mp3; sourceTree = "<group>"; };
+		D2FBAECC1CEFC1C400D5C766 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		D298A5D81CEF6D700029161E /* hey */ = {
 			isa = PBXGroup;
 			children = (
+				D2FBAECB1CEFC1B000D5C766 /* Fonts */,
 				D298A60C1CEF72300029161E /* Resources */,
 				D298A6071CEF6FE30029161E /* Extensions */,
 				D298A5D91CEF6D700029161E /* AppDelegate.swift */,
@@ -172,6 +175,14 @@
 				D298A6141CEF8AC90029161E /* heyLoop.wav */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		D2FBAECB1CEFC1B000D5C766 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D2FBAECC1CEFC1C400D5C766 /* OpenSans-Bold.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		FEEDE01C54C6FE0C1DDAA6C5 /* Pods */ = {
@@ -298,6 +309,7 @@
 			files = (
 				D298A5E41CEF6D700029161E /* LaunchScreen.storyboard in Resources */,
 				D298A6131CEF826C0029161E /* heyLoop.aiff in Resources */,
+				D2FBAECD1CEFC1C800D5C766 /* OpenSans-Bold.ttf in Resources */,
 				D298A5E11CEF6D700029161E /* Assets.xcassets in Resources */,
 				D298A6151CEF8AC90029161E /* heyLoop.wav in Resources */,
 				D298A5DF1CEF6D700029161E /* Main.storyboard in Resources */,
