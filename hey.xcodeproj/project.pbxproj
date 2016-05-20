@@ -17,6 +17,7 @@
 		D298A60B1CEF70B30029161E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298A60A1CEF70B30029161E /* MainViewController.swift */; };
 		D298A60E1CEF723D0029161E /* Chant_beat_5s-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D298A60D1CEF723D0029161E /* Chant_beat_5s-1.mp3 */; };
 		D298A6101CEF72B80029161E /* HeyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298A60F1CEF72B80029161E /* HeyPlayer.swift */; };
+		D298A6131CEF826C0029161E /* heyLoop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = D298A6121CEF826C0029161E /* heyLoop.aiff */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		D298A60A1CEF70B30029161E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D298A60D1CEF723D0029161E /* Chant_beat_5s-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Chant_beat_5s-1.mp3"; sourceTree = "<group>"; };
 		D298A60F1CEF72B80029161E /* HeyPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeyPlayer.swift; sourceTree = "<group>"; };
+		D298A6121CEF826C0029161E /* heyLoop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = heyLoop.aiff; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				D298A60D1CEF723D0029161E /* Chant_beat_5s-1.mp3 */,
+				D298A6121CEF826C0029161E /* heyLoop.aiff */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D298A5E41CEF6D700029161E /* LaunchScreen.storyboard in Resources */,
+				D298A6131CEF826C0029161E /* heyLoop.aiff in Resources */,
 				D298A5E11CEF6D700029161E /* Assets.xcassets in Resources */,
 				D298A5DF1CEF6D700029161E /* Main.storyboard in Resources */,
 				D298A60E1CEF723D0029161E /* Chant_beat_5s-1.mp3 in Resources */,

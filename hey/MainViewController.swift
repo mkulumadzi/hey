@@ -12,11 +12,19 @@ import AVFoundation
 
 class MainViewController: UIViewController {
     
-    let heyPlayer = HeyPlayer()
+    var heyPlayer:HeyPlayer!
     @IBOutlet weak var heyButton: UIButton!
     
-    override func viewDidLoad() {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        heyButton.hidden = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        heyPlayer = HeyPlayer()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.playerItemEndReached), name: AVPlayerItemDidPlayToEndTimeNotification, object: self.heyPlayer.player.currentItem)
+        heyButton.hidden = false
     }
     
     

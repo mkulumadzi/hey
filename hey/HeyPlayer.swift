@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-private let audioFile = "Chant_beat_5s-1"
+private let audioFile = "heyLoop"
 
 class HeyPlayer {
     
@@ -17,9 +17,11 @@ class HeyPlayer {
     var player:AVPlayer!
     
     init() {
-        if let path = NSBundle.mainBundle().pathForResource(audioFile, ofType: "mp3") {
+        if let path = NSBundle.mainBundle().pathForResource(audioFile, ofType: "aiff") {
             let url = NSURL(fileURLWithPath: path)
             self.player = AVPlayer(URL: url)
+        } else {
+            
         }
     }
     
