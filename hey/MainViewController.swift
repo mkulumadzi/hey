@@ -53,8 +53,11 @@ class MainViewController: UIViewController {
             stopPulse()
         } else {
             print(mach_absolute_time())
-            let interval = NSDate().timeIntervalSince1970
+            print(NSDate().timeIntervalSince1970)
+            let interval = Double(mach_absolute_time())
             let offset = interval % 0.625
+            print(offset)
+            print(NSDate().timeIntervalSince1970 % 0.625)
             let _ = NSTimer.scheduledTimerWithTimeInterval(offset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
         }
     }
