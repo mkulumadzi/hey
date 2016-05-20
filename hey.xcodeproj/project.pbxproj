@@ -15,6 +15,8 @@
 		D298A5FA1CEF6D700029161E /* heyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298A5F91CEF6D700029161E /* heyUITests.swift */; };
 		D298A6091CEF6FF40029161E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298A6081CEF6FF40029161E /* Colors.swift */; };
 		D298A60B1CEF70B30029161E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298A60A1CEF70B30029161E /* MainViewController.swift */; };
+		D298A60E1CEF723D0029161E /* Chant_beat_5s-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D298A60D1CEF723D0029161E /* Chant_beat_5s-1.mp3 */; };
+		D298A6101CEF72B80029161E /* HeyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298A60F1CEF72B80029161E /* HeyPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		D298A5FB1CEF6D700029161E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D298A6081CEF6FF40029161E /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D298A60A1CEF70B30029161E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D298A60D1CEF723D0029161E /* Chant_beat_5s-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Chant_beat_5s-1.mp3"; sourceTree = "<group>"; };
+		D298A60F1CEF72B80029161E /* HeyPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeyPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		D298A5D81CEF6D700029161E /* hey */ = {
 			isa = PBXGroup;
 			children = (
+				D298A60C1CEF72300029161E /* Resources */,
 				D298A6071CEF6FE30029161E /* Extensions */,
 				D298A5D91CEF6D700029161E /* AppDelegate.swift */,
 				D298A5DD1CEF6D700029161E /* Main.storyboard */,
@@ -106,6 +111,7 @@
 				D298A5E21CEF6D700029161E /* LaunchScreen.storyboard */,
 				D298A5E51CEF6D700029161E /* Info.plist */,
 				D298A60A1CEF70B30029161E /* MainViewController.swift */,
+				D298A60F1CEF72B80029161E /* HeyPlayer.swift */,
 			);
 			path = hey;
 			sourceTree = "<group>";
@@ -134,6 +140,14 @@
 				D298A6081CEF6FF40029161E /* Colors.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		D298A60C1CEF72300029161E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D298A60D1CEF723D0029161E /* Chant_beat_5s-1.mp3 */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +263,7 @@
 				D298A5E41CEF6D700029161E /* LaunchScreen.storyboard in Resources */,
 				D298A5E11CEF6D700029161E /* Assets.xcassets in Resources */,
 				D298A5DF1CEF6D700029161E /* Main.storyboard in Resources */,
+				D298A60E1CEF723D0029161E /* Chant_beat_5s-1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D298A60B1CEF70B30029161E /* MainViewController.swift in Sources */,
+				D298A6101CEF72B80029161E /* HeyPlayer.swift in Sources */,
 				D298A6091CEF6FF40029161E /* Colors.swift in Sources */,
 				D298A5DA1CEF6D700029161E /* AppDelegate.swift in Sources */,
 			);
