@@ -103,6 +103,13 @@ class MainViewController: UIViewController {
         timer.invalidate()
         tintedView.layer.removeAllAnimations()
         tintedView.alpha = 0.0
+        
+        currentColor = UIColor.heyYellow()
+        weak var weakSelf = self
+        UIView.animateWithDuration(1.25, animations: {
+            weakSelf?.view.backgroundColor = weakSelf?.currentColor
+        })
+        
     }
     
 }
