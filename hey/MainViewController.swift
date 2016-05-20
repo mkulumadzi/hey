@@ -16,6 +16,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var heyButton: UIButton!
     @IBOutlet weak var tintedView: UIView!
     
+    var timer:NSTimer!
+    
+    var currentColor:UIColor!
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tintedView.alpha = 0.0
@@ -35,27 +39,63 @@ class MainViewController: UIViewController {
         }
         if player.playing {
             player.stop()
+            player.currentTime = 0
             stopPulse()
         } else {
-            player.play()
-            pulse()
+            let interval = NSDate().timeIntervalSince1970
+            let offset = interval % 0.625
+            let _ = NSTimer.scheduledTimerWithTimeInterval(offset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
         }
     }
     
+    func playAfterDelay() {
+        guard let player = heyPlayer.audioPlayer else {
+            return
+        }
+        player.play()
+        pulse()
+    }
+    
     func pulse() {
+        
         weak var weakSelf = self
         UIView.animateWithDuration(0.3125, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
-           weakSelf?.tintedView.alpha = 0.2
+           weakSelf?.tintedView.alpha = 0.25
         }, completion: nil)
         
-        UIView.animateWithDuration(2.5, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
-            weakSelf?.view.backgroundColor = UIColor.heyBlue()
-            }, completion: nil)
+        currentColor = UIColor.heyYellow()
+        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
     }
     
+    func update() {
+        getNextColor()
+        weak var weakSelf = self
+        UIView.animateWithDuration(2.5, animations: {
+            weakSelf?.view.backgroundColor = weakSelf?.currentColor
+        })
+    }
+
+    func getNextColor() {
+        if currentColor == UIColor.heyYellow() {
+            currentColor = UIColor.heyGreen()
+        } else if currentColor == UIColor.heyGreen() {
+            currentColor = UIColor.heyBlue()
+        } else if currentColor == UIColor.heyBlue() {
+            currentColor = UIColor.heyPurple()
+        } else if currentColor == UIColor.heyPurple() {
+            currentColor = UIColor.heyRed()
+        } else if currentColor == UIColor.heyRed() {
+            currentColor = UIColor.heyOrange()
+        } else {
+            currentColor = UIColor.heyYellow()
+        }
+    }
+    
     func stopPulse() {
+        timer.invalidate()
         tintedView.layer.removeAllAnimations()
+        tintedView.alpha = 0.0
     }
     
 }

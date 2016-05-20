@@ -13,23 +13,27 @@ extension UIColor {
 
     
     class func heyBlue() -> UIColor {
-        return UIColor.colorWithHexString("#1BE7FF")
+        return UIColor(hue: 186/360, saturation: 0.89, brightness: 1.0, alpha: 1.0)
     }
     
     class func heyGreen() -> UIColor {
-        return UIColor.colorWithHexString("#6EEB83")
+        return UIColor(hue: 130/360, saturation: 0.53, brightness: 0.92, alpha: 1.0)
     }
     
     class func heyYellow() -> UIColor {
-        return UIColor.colorWithHexString("#E4FF1A")
+        return UIColor(hue: 67/360, saturation: 0.9, brightness: 1.0, alpha: 1.0)
     }
     
     class func heyOrange() -> UIColor {
-        return UIColor.colorWithHexString("#E8AA14")
+        return UIColor(hue: 42/360, saturation: 0.91, brightness: 0.91, alpha: 1.0)
     }
     
     class func heyRed() -> UIColor {
-        return UIColor.colorWithHexString("#FF5714")
+        return UIColor(hue: 17/360, saturation: 0.92, brightness: 1.0, alpha: 1.0)
+    }
+    
+    class func heyPurple() -> UIColor {
+        return UIColor(hue: 300/360, saturation: 0.66, brightness: 1.0, alpha: 1.0)
     }
     
     private class func colorComponentFrom(string: String, start: Int, length: Int) -> CGFloat {

@@ -18,7 +18,7 @@ class HeyPlayer {
     
     init() {
         do {
-            try self.audioPlayer = AudioPlayer(fileName: "heyLoop.wav")
+            try self.audioPlayer = AudioPlayer(fileName: "heyLoop.mp3")
             self.audioPlayer.numberOfLoops = -1
         } catch {
             print(error)
