@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tintedView.alpha = 0.0
+        formatView()
         heyButton.hidden = true
     }
     
@@ -30,6 +31,12 @@ class MainViewController: UIViewController {
         super.viewDidAppear(animated)
         heyPlayer = HeyPlayer()
         heyButton.hidden = false
+    }
+    
+    func formatView() {
+        let attributes = [NSFontAttributeName:UIFont.boldSystemFontOfSize(96.0), NSForegroundColorAttributeName: UIColor.whiteColor(), NSStrokeColorAttributeName:UIColor.blackColor(), NSStrokeWidthAttributeName:NSNumber(float: -3.0)]
+        let title = NSAttributedString(string: "HEY!", attributes: attributes)
+        heyButton.setAttributedTitle(title, forState: .Normal)
     }
     
     
