@@ -45,7 +45,6 @@ class MainViewController: UIViewController {
         heyButton.setAttributedTitle(title, forState: .Normal)
     }
     
-    
     @IBAction func heyButtonTapped(sender: AnyObject) {
         guard let player = heyPlayer.audioPlayer else {
             return
