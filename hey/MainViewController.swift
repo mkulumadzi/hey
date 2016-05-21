@@ -20,10 +20,13 @@ class MainViewController: UIViewController {
     var timer:NSTimer!
     var currentColor:UIColor!
     
+    var clockOffset:Double!
+    
     let server = NTPServer.defaultServer()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        synchronizeClocks()
         formatView()
     }
     
@@ -31,6 +34,14 @@ class MainViewController: UIViewController {
         super.viewDidAppear(animated)
         heyPlayer = HeyPlayer()
         heyButton.hidden = false
+    }
+    
+    func synchronizeClocks() {
+        if let date = try? server.date() {
+            let networkInterval = date.timeIntervalSince1970
+            let clockInterval = NSDate().timeIntervalSince1970
+            clockOffset = networkInterval - clockInterval
+        }
     }
     
     func formatView() {
@@ -54,14 +65,10 @@ class MainViewController: UIViewController {
             player.currentTime = 0
             stopPulse()
         } else {
-            if let date = try? server.date() {
-                let interval = date.timeIntervalSince1970
-                let offset = interval % 0.625
-                print(offset)
-                let _ = NSTimer.scheduledTimerWithTimeInterval(offset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
-            } else {
-                playAfterDelay()
-            }
+            let interval = NSDate().timeIntervalSince1970 + clockOffset
+            let offset = interval % 0.625
+            print (offset)
+            let _ = NSTimer.scheduledTimerWithTimeInterval(offset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
         }
     }
     
