@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import NTPKit
 
 class MainViewController: UIViewController {
     
@@ -17,14 +18,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tintedView: UIView!
     
     var timer:NSTimer!
-    
     var currentColor:UIColor!
+    
+    let server = NTPServer.defaultServer()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        tintedView.alpha = 0.0
         formatView()
-        heyButton.hidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -37,6 +37,9 @@ class MainViewController: UIViewController {
         guard let font = UIFont(name: "OpenSans-Bold", size: 96.0) else {
             return
         }
+        tintedView.alpha = 0.0
+        heyButton.hidden = true
+        
         let attributes = [NSFontAttributeName:font, NSForegroundColorAttributeName: UIColor.whiteColor(), NSStrokeColorAttributeName:UIColor.blackColor(), NSStrokeWidthAttributeName:NSNumber(float: -3.0)]
         let title = NSAttributedString(string: "HEY!", attributes: attributes)
         heyButton.setAttributedTitle(title, forState: .Normal)
@@ -52,13 +55,14 @@ class MainViewController: UIViewController {
             player.currentTime = 0
             stopPulse()
         } else {
-            print(mach_absolute_time())
-            print(NSDate().timeIntervalSince1970)
-            let interval = Double(mach_absolute_time())
-            let offset = interval % 0.625
-            print(offset)
-            print(NSDate().timeIntervalSince1970 % 0.625)
-            let _ = NSTimer.scheduledTimerWithTimeInterval(offset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
+            if let date = try? server.date() {
+                let interval = date.timeIntervalSince1970
+                let offset = interval % 0.625
+                print(offset)
+                let _ = NSTimer.scheduledTimerWithTimeInterval(offset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
+            } else {
+                playAfterDelay()
+            }
         }
     }
     

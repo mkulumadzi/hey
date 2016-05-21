@@ -6,6 +6,7 @@
 target 'hey' do
 
   pod 'AudioPlayerSwift'
+  pod 'NTPKit'
 
   use_frameworks!
 
