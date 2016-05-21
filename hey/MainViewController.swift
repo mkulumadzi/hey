@@ -41,6 +41,8 @@ class MainViewController: UIViewController {
             let networkInterval = date.timeIntervalSince1970
             let clockInterval = NSDate().timeIntervalSince1970
             clockOffset = networkInterval - clockInterval
+        } else {
+            clockOffset = 0
         }
     }
     
