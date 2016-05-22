@@ -17,6 +17,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var heyButton: UIButton!
     @IBOutlet weak var tintedView: UIView!
     
+    @IBOutlet weak var clockLabel: UILabel!
+    
     var timer:NSTimer!
     var currentColor:UIColor!
     
@@ -46,6 +48,16 @@ class MainViewController: UIViewController {
         }
     }
     
+    func setClockValue() {
+        if let date = try? server.date() {
+            let coder = NSCoder()
+            let format = NSDateFormatter(coder: coder)
+            format?.dateFormat = "00:00:00"
+            let dateString = format?.stringFromDate(date)
+            clockLabel.text = dateString
+        }
+    }
+    
     func formatView() {
         guard let font = UIFont(name: "OpenSans-Bold", size: 96.0) else {
             return
@@ -68,7 +80,7 @@ class MainViewController: UIViewController {
             stopPulse()
         } else {
             let interval = NSDate().timeIntervalSince1970 + clockOffset
-            let offset = interval % 0.625
+            let offset = interval % 2.5
             print (offset)
             let _ = NSTimer.scheduledTimerWithTimeInterval(offset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
         }
@@ -86,7 +98,7 @@ class MainViewController: UIViewController {
         
         weak var weakSelf = self
         UIView.animateWithDuration(0.3125, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
-           weakSelf?.tintedView.alpha = 0.25
+            weakSelf?.tintedView.alpha = 0.25
         }, completion: nil)
         
         currentColor = UIColor.heyYellow()
