@@ -70,7 +70,7 @@ class MainViewController: UIViewController {
             stopPulse()
         } else {
             let interval = NSDate().timeIntervalSince1970 + clockOffset
-            let offset = interval % 2.5
+            let offset = interval % 0.625
             print (offset)
             let _ = NSTimer.scheduledTimerWithTimeInterval(offset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
         }
