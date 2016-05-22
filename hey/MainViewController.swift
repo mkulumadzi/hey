@@ -61,6 +61,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func heyButtonTapped(sender: AnyObject) {
+        print("tapped")
         guard let player = heyPlayer.audioPlayer else {
             return
         }
@@ -124,9 +125,9 @@ class MainViewController: UIViewController {
     func stopPulse() {
         timer.invalidate()
         tintedView.layer.removeAllAnimations()
-        heyLabel.transform = CGAffineTransformIdentity
         tintedView.alpha = 0.0
-        
+        heyLabel.layer.removeAllAnimations()
+        heyLabel.transform = CGAffineTransformIdentity
         currentColor = UIColor.heyYellow()
         weak var weakSelf = self
         UIView.animateWithDuration(1.25, animations: {
