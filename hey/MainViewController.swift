@@ -15,9 +15,8 @@ class MainViewController: UIViewController {
     
     var heyPlayer:HeyPlayer!
     @IBOutlet weak var heyButton: UIButton!
+    @IBOutlet weak var heyLabel: UILabel!
     @IBOutlet weak var tintedView: UIView!
-    
-    @IBOutlet weak var clockLabel: UILabel!
     
     var timer:NSTimer!
     var currentColor:UIColor!
@@ -38,6 +37,7 @@ class MainViewController: UIViewController {
         heyButton.hidden = false
     }
     
+    // Doesn't quite work...
     func synchronizeClocks() {
         if let date = try? server.date() {
             let networkInterval = date.timeIntervalSince1970
@@ -45,16 +45,6 @@ class MainViewController: UIViewController {
             clockOffset = networkInterval - clockInterval
         } else {
             clockOffset = 0
-        }
-    }
-    
-    func setClockValue() {
-        if let date = try? server.date() {
-            let coder = NSCoder()
-            let format = NSDateFormatter(coder: coder)
-            format?.dateFormat = "00:00:00"
-            let dateString = format?.stringFromDate(date)
-            clockLabel.text = dateString
         }
     }
     
@@ -67,7 +57,7 @@ class MainViewController: UIViewController {
         
         let attributes = [NSFontAttributeName:font, NSForegroundColorAttributeName: UIColor.whiteColor(), NSStrokeColorAttributeName:UIColor.blackColor(), NSStrokeWidthAttributeName:NSNumber(float: -3.0)]
         let title = NSAttributedString(string: "HEY!", attributes: attributes)
-        heyButton.setAttributedTitle(title, forState: .Normal)
+        heyLabel.attributedText = title
     }
     
     @IBAction func heyButtonTapped(sender: AnyObject) {
@@ -99,6 +89,7 @@ class MainViewController: UIViewController {
         weak var weakSelf = self
         UIView.animateWithDuration(0.3125, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
             weakSelf?.tintedView.alpha = 0.25
+            weakSelf?.heyLabel.transform = CGAffineTransformMakeScale(1.1, 1.1)
         }, completion: nil)
         
         currentColor = UIColor.heyYellow()
@@ -133,6 +124,7 @@ class MainViewController: UIViewController {
     func stopPulse() {
         timer.invalidate()
         tintedView.layer.removeAllAnimations()
+        heyLabel.transform = CGAffineTransformIdentity
         tintedView.alpha = 0.0
         
         currentColor = UIColor.heyYellow()
