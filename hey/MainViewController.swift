@@ -11,6 +11,8 @@ import UIKit
 import AVFoundation
 import NTPKit
 
+private let beatLength = 0.625
+
 class MainViewController: UIViewController {
     
     var heyPlayer:HeyPlayer!
@@ -37,7 +39,6 @@ class MainViewController: UIViewController {
         heyButton.hidden = false
     }
     
-    // Doesn't quite work...
     func synchronizeClocks() {
         if let date = try? server.date() {
             let networkInterval = date.timeIntervalSince1970
@@ -71,7 +72,7 @@ class MainViewController: UIViewController {
             stopPulse()
         } else {
             let interval = NSDate().timeIntervalSince1970 + clockOffset
-            let offset = interval % 0.625
+            let offset = beatLength - ( interval % beatLength )
             print (offset)
             let _ = NSTimer.scheduledTimerWithTimeInterval(offset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
         }
