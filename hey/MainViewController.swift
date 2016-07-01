@@ -9,11 +9,8 @@
 import Foundation
 import UIKit
 import AVFoundation
-import NTPKit
 
-private let beatLength = 0.625
-
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, HeyPlayerDelegate {
     
     var heyPlayer:HeyPlayer!
     @IBOutlet weak var heyButton: UIButton!
@@ -23,30 +20,16 @@ class MainViewController: UIViewController {
     var timer:NSTimer!
     var currentColor:UIColor!
     
-    var clockOffset:Double!
-    
-    let server = NTPServer.defaultServer()
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        synchronizeClocks()
         formatView()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         heyPlayer = HeyPlayer()
+        heyPlayer.delegate = self
         heyButton.hidden = false
-    }
-    
-    func synchronizeClocks() {
-        if let date = try? server.date() {
-            let networkInterval = date.timeIntervalSince1970
-            let clockInterval = NSDate().timeIntervalSince1970
-            clockOffset = networkInterval - clockInterval
-        } else {
-            clockOffset = 0
-        }
     }
     
     func formatView() {
@@ -61,33 +44,28 @@ class MainViewController: UIViewController {
         heyLabel.attributedText = title
     }
     
+    // MARK: User actions
+    
     @IBAction func heyButtonTapped(sender: AnyObject) {
-        print("tapped")
-        guard let player = heyPlayer.audioPlayer else {
+        guard let player = heyPlayer else {
             return
         }
-        if player.playing {
-            player.stop()
-            player.currentTime = 0
-            stopPulse()
-        } else {
-            let interval = NSDate().timeIntervalSince1970 + clockOffset
-            let offset = beatLength - ( interval % beatLength )
-            print (offset)
-            let _ = NSTimer.scheduledTimerWithTimeInterval(offset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
-        }
+        player.toggle()
     }
     
-    func playAfterDelay() {
-        guard let player = heyPlayer.audioPlayer else {
-            return
-        }
-        player.play()
+    // MARK: Delegate functions
+    
+    func playerStopped() {
+        stopPulse()
+    }
+    
+    func playerPlayed() {
         pulse()
     }
     
+    // MARK: View animations
+    
     func pulse() {
-        
         weak var weakSelf = self
         UIView.animateWithDuration(0.3125, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
             weakSelf?.tintedView.alpha = 0.25
