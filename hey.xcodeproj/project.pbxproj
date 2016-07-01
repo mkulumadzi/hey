@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		82071B682CDE0DEE72F2039C /* Pods_hey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF8BECF8BC10CF47247E32C /* Pods_hey.framework */; };
+		D21D2FEB1D27349700A0849C /* honeycomb.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D2FEA1D27349700A0849C /* honeycomb.png */; };
+		D21D2FEF1D27351300A0849C /* floral_pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D2FEE1D27351300A0849C /* floral_pattern.png */; };
+		D21D2FF11D27364E00A0849C /* box-pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D2FF01D27364E00A0849C /* box-pattern.png */; };
+		D21D2FF31D27370000A0849C /* vector-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D2FF21D27370000A0849C /* vector-tile.png */; };
 		D298A5DA1CEF6D700029161E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298A5D91CEF6D700029161E /* AppDelegate.swift */; };
 		D298A5DF1CEF6D700029161E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D298A5DD1CEF6D700029161E /* Main.storyboard */; };
 		D298A5E11CEF6D700029161E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D298A5E01CEF6D700029161E /* Assets.xcassets */; };
@@ -42,6 +46,10 @@
 		1BF8BECF8BC10CF47247E32C /* Pods_hey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		689B3FAD88715E12B0490B37 /* Pods-hey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hey.release.xcconfig"; path = "Pods/Target Support Files/Pods-hey/Pods-hey.release.xcconfig"; sourceTree = "<group>"; };
 		8ACB7951D9F3CBF6B66C7730 /* Pods-hey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hey/Pods-hey.debug.xcconfig"; sourceTree = "<group>"; };
+		D21D2FEA1D27349700A0849C /* honeycomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = honeycomb.png; sourceTree = "<group>"; };
+		D21D2FEE1D27351300A0849C /* floral_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floral_pattern.png; sourceTree = "<group>"; };
+		D21D2FF01D27364E00A0849C /* box-pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "box-pattern.png"; sourceTree = "<group>"; };
+		D21D2FF21D27370000A0849C /* vector-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vector-tile.png"; sourceTree = "<group>"; };
 		D298A5D61CEF6D700029161E /* hey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D298A5D91CEF6D700029161E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D298A5DE1CEF6D700029161E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -164,6 +172,10 @@
 			isa = PBXGroup;
 			children = (
 				D2ED4F721CEFA8F00037D333 /* heyLoop.mp3 */,
+				D21D2FEA1D27349700A0849C /* honeycomb.png */,
+				D21D2FEE1D27351300A0849C /* floral_pattern.png */,
+				D21D2FF01D27364E00A0849C /* box-pattern.png */,
+				D21D2FF21D27370000A0849C /* vector-tile.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -298,10 +310,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D21D2FEB1D27349700A0849C /* honeycomb.png in Resources */,
 				D298A5E41CEF6D700029161E /* LaunchScreen.storyboard in Resources */,
 				D2FBAECD1CEFC1C800D5C766 /* OpenSans-Bold.ttf in Resources */,
 				D298A5E11CEF6D700029161E /* Assets.xcassets in Resources */,
+				D21D2FEF1D27351300A0849C /* floral_pattern.png in Resources */,
 				D298A5DF1CEF6D700029161E /* Main.storyboard in Resources */,
+				D21D2FF11D27364E00A0849C /* box-pattern.png in Resources */,
+				D21D2FF31D27370000A0849C /* vector-tile.png in Resources */,
 				D2ED4F731CEFA8F00037D333 /* heyLoop.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,6 +16,7 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
     @IBOutlet weak var heyButton: UIButton!
     @IBOutlet weak var heyLabel: UILabel!
     @IBOutlet weak var tintedView: UIView!
+    @IBOutlet weak var patternImage: UIImageView!
     
     var timer:NSTimer!
     var currentColor:UIColor!
@@ -38,6 +39,7 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
         }
         tintedView.alpha = 0.0
         heyButton.hidden = true
+        patternImage.alpha = 0.0
         
         let attributes = [NSFontAttributeName:font, NSForegroundColorAttributeName: UIColor.whiteColor(), NSStrokeColorAttributeName:UIColor.blackColor(), NSStrokeWidthAttributeName:NSNumber(float: -3.0)]
         let title = NSAttributedString(string: "HEY!", attributes: attributes)
@@ -64,7 +66,7 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
     }
     
     // MARK: View animations
-    
+
     func pulse() {
         weak var weakSelf = self
         UIView.animateWithDuration(0.3125, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
@@ -75,6 +77,15 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
         currentColor = UIColor.heyYellow()
         timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
+        fadeVectorImageInOut()
+        
+    }
+    
+    func fadeVectorImageInOut() {
+        weak var weakSelf = self
+        UIView.animateWithDuration(2.5, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
+            weakSelf?.patternImage.alpha = 0.2
+            }, completion: nil)
     }
     
     func update() {
@@ -105,6 +116,8 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
         timer.invalidate()
         tintedView.layer.removeAllAnimations()
         tintedView.alpha = 0.0
+        patternImage.layer.removeAllAnimations()
+        patternImage.alpha = 0.0
         heyLabel.layer.removeAllAnimations()
         heyLabel.transform = CGAffineTransformIdentity
         currentColor = UIColor.heyYellow()

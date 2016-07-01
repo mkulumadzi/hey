@@ -36,6 +36,10 @@ extension UIColor {
         return UIColor(hue: 300/360, saturation: 0.66, brightness: 1.0, alpha: 1.0)
     }
     
+    class func darkYellow() -> UIColor {
+        return UIColor(hue: 67/360, saturation: 0.9, brightness: 0.75, alpha: 1.0)
+    }
+    
     private class func colorComponentFrom(string: String, start: Int, length: Int) -> CGFloat {
         let index1 = string.startIndex.advancedBy(start)
         let substring1 = string.substringFromIndex(index1)

@@ -22,6 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vector-tile.png" translatesAutoresizingMaskIntoConstraints="NO" id="mG9-hy-hdU" userLabel="patternImage">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7P-OU-Y7S" userLabel="tintedView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,12 +56,16 @@
                         <color key="backgroundColor" red="0.87434375286102295" green="1" blue="0.08902827650308609" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="d0B-vl-aCb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Fam-e1-XVX"/>
+                            <constraint firstAttribute="trailing" secondItem="mG9-hy-hdU" secondAttribute="trailing" id="MfO-bU-7yY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="d0B-vl-aCb" secondAttribute="bottom" id="N8N-MW-Ald"/>
                             <constraint firstItem="Rhx-Hb-g0O" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="NEm-Oz-CaK"/>
                             <constraint firstAttribute="trailing" secondItem="Rhx-Hb-g0O" secondAttribute="trailing" id="RHn-zP-zzo"/>
                             <constraint firstAttribute="trailing" secondItem="V7P-OU-Y7S" secondAttribute="trailing" id="RT6-Be-gMC"/>
                             <constraint firstItem="V7P-OU-Y7S" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="RyX-Eh-iAi"/>
                             <constraint firstItem="V7P-OU-Y7S" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UQ0-AD-Kuc"/>
+                            <constraint firstItem="mG9-hy-hdU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="W1t-fG-ycg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mG9-hy-hdU" secondAttribute="bottom" id="bO9-xq-ciI"/>
+                            <constraint firstItem="mG9-hy-hdU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="buN-L4-z1z"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rhx-Hb-g0O" secondAttribute="bottom" id="fFU-3k-LhK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="V7P-OU-Y7S" secondAttribute="bottom" id="m8d-ON-QcZ"/>
                             <constraint firstItem="d0B-vl-aCb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="o92-iw-ci9"/>
@@ -69,6 +76,7 @@
                     <connections>
                         <outlet property="heyButton" destination="Rhx-Hb-g0O" id="fGu-l8-b5G"/>
                         <outlet property="heyLabel" destination="d0B-vl-aCb" id="Qba-k4-AmH"/>
+                        <outlet property="patternImage" destination="mG9-hy-hdU" id="BRh-66-WcU"/>
                         <outlet property="tintedView" destination="V7P-OU-Y7S" id="Xhj-Pr-sup"/>
                     </connections>
                 </viewController>
@@ -77,4 +85,7 @@
             <point key="canvasLocation" x="309" y="369"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="vector-tile.png" width="900" height="900"/>
+    </resources>
 </document>

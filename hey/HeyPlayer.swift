@@ -25,14 +25,6 @@ class HeyPlayer {
     var delegate:HeyPlayerDelegate!
     let server = NTPServer.defaultServer()
     
-    var playerOffset:Double {
-        get {
-            let interval = NSDate().timeIntervalSince1970 + clockOffset
-            let offset = beatLength - ( interval % beatLength )
-            return offset
-        }
-    }
-    
     init() {
         do {
             try self.audioPlayer = AudioPlayer(fileName: "heyLoop.mp3")
@@ -53,6 +45,15 @@ class HeyPlayer {
             clockOffset = networkInterval - clockInterval
         } else {
             clockOffset = 0
+        }
+    }
+    
+    var playerOffset:Double {
+        // This value is used to calculate the amount of time (in fractions of a second) that the player should wait before beginning to play the track.
+        get {
+            let interval = NSDate().timeIntervalSince1970 + clockOffset
+            let offset = beatLength - ( interval % beatLength )
+            return offset
         }
     }
     
