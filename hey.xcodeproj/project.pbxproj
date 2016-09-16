@@ -19,6 +19,8 @@
 		D298A6091CEF6FF40029161E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298A6081CEF6FF40029161E /* Colors.swift */; };
 		D298A60B1CEF70B30029161E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298A60A1CEF70B30029161E /* MainViewController.swift */; };
 		D298A6101CEF72B80029161E /* HeyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298A60F1CEF72B80029161E /* HeyPlayer.swift */; };
+		D2E92FC61D8C828C007FAEEA /* circles.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E92FC51D8C828C007FAEEA /* circles.png */; };
+		D2E92FC81D8C8393007FAEEA /* winter_pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E92FC71D8C8393007FAEEA /* winter_pattern.png */; };
 		D2ED4F731CEFA8F00037D333 /* heyLoop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2ED4F721CEFA8F00037D333 /* heyLoop.mp3 */; };
 		D2FBAECD1CEFC1C800D5C766 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2FBAECC1CEFC1C400D5C766 /* OpenSans-Bold.ttf */; };
 /* End PBXBuildFile section */
@@ -61,6 +63,8 @@
 		D298A6081CEF6FF40029161E /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D298A60A1CEF70B30029161E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D298A60F1CEF72B80029161E /* HeyPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeyPlayer.swift; sourceTree = "<group>"; };
+		D2E92FC51D8C828C007FAEEA /* circles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circles.png; sourceTree = "<group>"; };
+		D2E92FC71D8C8393007FAEEA /* winter_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winter_pattern.png; sourceTree = "<group>"; };
 		D2ED4F721CEFA8F00037D333 /* heyLoop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = heyLoop.mp3; sourceTree = "<group>"; };
 		D2FBAECC1CEFC1C400D5C766 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +103,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D21D2FF41D27614300A0849C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D2E92FC51D8C828C007FAEEA /* circles.png */,
+				D21D2FEA1D27349700A0849C /* honeycomb.png */,
+				D21D2FF21D27370000A0849C /* vector-tile.png */,
+				D2E92FC71D8C8393007FAEEA /* winter_pattern.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		D298A5CD1CEF6D700029161E = {
 			isa = PBXGroup;
 			children = (
@@ -124,8 +139,9 @@
 		D298A5D81CEF6D700029161E /* hey */ = {
 			isa = PBXGroup;
 			children = (
+				D21D2FF41D27614300A0849C /* Images */,
 				D2FBAECB1CEFC1B000D5C766 /* Fonts */,
-				D298A60C1CEF72300029161E /* Resources */,
+				D298A60C1CEF72300029161E /* Audio */,
 				D298A6071CEF6FE30029161E /* Extensions */,
 				D298A5D91CEF6D700029161E /* AppDelegate.swift */,
 				D298A5DD1CEF6D700029161E /* Main.storyboard */,
@@ -164,14 +180,12 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		D298A60C1CEF72300029161E /* Resources */ = {
+		D298A60C1CEF72300029161E /* Audio */ = {
 			isa = PBXGroup;
 			children = (
 				D2ED4F721CEFA8F00037D333 /* heyLoop.mp3 */,
-				D21D2FEA1D27349700A0849C /* honeycomb.png */,
-				D21D2FF21D27370000A0849C /* vector-tile.png */,
 			);
-			name = Resources;
+			name = Audio;
 			sourceTree = "<group>";
 		};
 		D2FBAECB1CEFC1B000D5C766 /* Fonts */ = {
@@ -307,10 +321,12 @@
 				D21D2FEB1D27349700A0849C /* honeycomb.png in Resources */,
 				D298A5E41CEF6D700029161E /* LaunchScreen.storyboard in Resources */,
 				D2FBAECD1CEFC1C800D5C766 /* OpenSans-Bold.ttf in Resources */,
+				D2E92FC61D8C828C007FAEEA /* circles.png in Resources */,
 				D298A5E11CEF6D700029161E /* Assets.xcassets in Resources */,
 				D298A5DF1CEF6D700029161E /* Main.storyboard in Resources */,
 				D21D2FF31D27370000A0849C /* vector-tile.png in Resources */,
 				D2ED4F731CEFA8F00037D333 /* heyLoop.mp3 in Resources */,
+				D2E92FC81D8C8393007FAEEA /* winter_pattern.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

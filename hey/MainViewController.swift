@@ -18,7 +18,11 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
     @IBOutlet weak var tintedView: UIView!
     @IBOutlet weak var patternImage: UIImageView!
     
-    var timer:NSTimer!
+    let patternImages = ["vector-tile", "honeycomb", "circles.png", "winter_pattern.png"]
+    var patternImageIndex = 0
+    
+    var colorTimer:NSTimer!
+    var imageTimer:NSTimer!
     var currentColor:UIColor!
     
     override func viewWillAppear(animated: Bool) {
@@ -44,6 +48,8 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
         let attributes = [NSFontAttributeName:font, NSForegroundColorAttributeName: UIColor.whiteColor(), NSStrokeColorAttributeName:UIColor.blackColor(), NSStrokeWidthAttributeName:NSNumber(float: -3.0)]
         let title = NSAttributedString(string: "HEY!", attributes: attributes)
         heyLabel.attributedText = title
+        
+        setPatternImage()
     }
     
     // MARK: User actions
@@ -75,7 +81,7 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
         }, completion: nil)
         
         currentColor = UIColor.heyYellow()
-        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        colorTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
         fadeVectorImageInOut()
         
@@ -86,6 +92,20 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
         UIView.animateWithDuration(2.5, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
             weakSelf?.patternImage.alpha = 0.2
             }, completion: nil)
+        imageTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.setPatternImage), userInfo: nil, repeats: true)
+    }
+    
+    func setPatternImage() {
+        let imageName = patternImages[patternImageIndex]
+        if let image = UIImage(named: imageName) {
+            patternImage.image = image
+        }
+        
+        if patternImageIndex < patternImages.count - 1 {
+            patternImageIndex += 1
+        } else {
+            patternImageIndex = 0
+        }
     }
     
     func update() {
@@ -113,7 +133,8 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
     }
     
     func stopPulse() {
-        timer.invalidate()
+        colorTimer.invalidate()
+        imageTimer.invalidate()
         tintedView.layer.removeAllAnimations()
         tintedView.alpha = 0.0
         patternImage.layer.removeAllAnimations()
