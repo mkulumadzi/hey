@@ -40,23 +40,23 @@ extension UIColor {
         return UIColor(hue: 67/360, saturation: 0.9, brightness: 0.75, alpha: 1.0)
     }
     
-    private class func colorComponentFrom(string: String, start: Int, length: Int) -> CGFloat {
-        let index1 = string.startIndex.advancedBy(start)
-        let substring1 = string.substringFromIndex(index1)
+    fileprivate class func colorComponentFrom(_ string: String, start: Int, length: Int) -> CGFloat {
+        let index1 = string.characters.index(string.startIndex, offsetBy: start)
+        let substring1 = string.substring(from: index1)
         
-        let index2 = substring1.startIndex.advancedBy(length)
-        let substring2 = substring1.substringToIndex(index2)
+        let index2 = substring1.characters.index(substring1.startIndex, offsetBy: length)
+        let substring2 = substring1.substring(to: index2)
         
         let fullHex = length == 2 ? substring2 : substring2 + substring2
         
         var hexString:CUnsignedInt = 0;
-        NSScanner.init(string: fullHex).scanHexInt(&hexString)
+        Scanner.init(string: fullHex).scanHexInt32(&hexString)
         
         return CGFloat(hexString) / 255.0
     }
     
-    private class func colorWithHexString(hexString: String) -> UIColor {
-        let colorString = hexString.stringByReplacingOccurrencesOfString("#", withString: "")
+    fileprivate class func colorWithHexString(_ hexString: String) -> UIColor {
+        let colorString = hexString.replacingOccurrences(of: "#", with: "")
         var alpha:CGFloat!
         var red:CGFloat!
         var blue:CGFloat!
@@ -88,7 +88,7 @@ extension UIColor {
             blue = UIColor.colorComponentFrom(colorString, start: 4, length: 1)
             break
         default:
-            NSException.raise("Invalid color value", format: "Color value \(hexString) is invalid. It should be a hex value of the form #RGB, #ARGB, #RRGGBB, #AARRGGBB", arguments:getVaList(["nil"]))
+            NSException.raise(NSExceptionName(rawValue: "Invalid color value"), format: "Color value \(hexString) is invalid. It should be a hex value of the form #RGB, #ARGB, #RRGGBB, #AARRGGBB", arguments:getVaList(["nil"]))
             break
         }
         

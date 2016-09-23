@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 import AudioPlayer
-import NTPKit
+//import NTPKit
 
 private let beatLength = 0.625
 
@@ -23,7 +23,7 @@ class HeyPlayer {
     var audioPlayer:AudioPlayer!
     var clockOffset:Double!
     var delegate:HeyPlayerDelegate!
-    let server = NTPServer.defaultServer()
+    //let server = NTPServer.default()
     
     init() {
         do {
@@ -37,22 +37,22 @@ class HeyPlayer {
     
     // MARK: Timing functions
     
-    private func synchronizeClocks() {
-        if let date = try? server.date() {
+    fileprivate func synchronizeClocks() {
+        //if let date = try? server.date() {
             // Get the network time using NTP and calculate the offset (in seconds) from that time and the system clock)
-            let networkInterval = date.timeIntervalSince1970
-            let clockInterval = NSDate().timeIntervalSince1970
-            clockOffset = networkInterval - clockInterval
-        } else {
+            //let networkInterval = date.timeIntervalSince1970
+            //let clockInterval = Date().timeIntervalSince1970
+            //clockOffset = networkInterval - clockInterval
+        //} else {
             clockOffset = 0
-        }
+        //}
     }
     
     var playerOffset:Double {
         // This value is used to calculate the amount of time (in fractions of a second) that the player should wait before beginning to play the track.
         get {
-            let interval = NSDate().timeIntervalSince1970 + clockOffset
-            let offset = beatLength - ( interval % beatLength )
+            let interval = Date().timeIntervalSince1970 + clockOffset
+            let offset = beatLength - ( interval.truncatingRemainder(dividingBy: beatLength) )
             return offset
         }
     }
@@ -61,7 +61,7 @@ class HeyPlayer {
     // MARK: User actions
     
     func toggle() {
-        if audioPlayer.playing {
+        if audioPlayer.isPlaying {
             stopPlaying()
         } else {
             startPlaying()
@@ -70,14 +70,14 @@ class HeyPlayer {
     
     // MARK: Private
     
-    private func stopPlaying() {
+    fileprivate func stopPlaying() {
         audioPlayer.stop()
         audioPlayer.currentTime = 0
         delegate.playerStopped()
     }
     
-    private func startPlaying() {
-        let _ = NSTimer.scheduledTimerWithTimeInterval(playerOffset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
+    fileprivate func startPlaying() {
+        let _ = Timer.scheduledTimer(timeInterval: playerOffset, target: self, selector: #selector(self.playAfterDelay), userInfo: nil, repeats: false)
     }
     
     @objc func playAfterDelay() {

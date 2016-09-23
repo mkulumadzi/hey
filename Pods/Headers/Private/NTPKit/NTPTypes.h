@@ -1,1 +1,0 @@
-../../../NTPKit/NTPKit/NTPTypes.h

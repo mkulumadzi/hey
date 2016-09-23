@@ -1,13 +1,12 @@
 PODS:
-  - AudioPlayerSwift (1.3.0)
-  - NTPKit (1.0.0)
+  - AudioPlayerSwift (1.4.0)
 
 DEPENDENCIES:
   - AudioPlayerSwift
-  - NTPKit
 
 SPEC CHECKSUMS:
-  AudioPlayerSwift: 344a904c360f345d9d08012a3134164cbe1ddbc3
-  NTPKit: 033850ecb5841b40b50c95e723f31e43d24ae837
+  AudioPlayerSwift: 3c2172ae5e0e6d17dcb886c79c04cae57d293076
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 2d37088e9e4c6b8c79f14759ac2b89837310445e
+
+COCOAPODS: 1.0.1

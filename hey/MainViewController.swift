@@ -21,20 +21,20 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
     let patternImages = ["vector-tile", "honeycomb", "circles.png", "winter_pattern.png"]
     var patternImageIndex = 0
     
-    var colorTimer:NSTimer!
-    var imageTimer:NSTimer!
+    var colorTimer:Timer!
+    var imageTimer:Timer!
     var currentColor:UIColor!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         formatView()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         heyPlayer = HeyPlayer()
         heyPlayer.delegate = self
-        heyButton.hidden = false
+        heyButton.isHidden = false
     }
     
     func formatView() {
@@ -42,10 +42,10 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
             return
         }
         tintedView.alpha = 0.0
-        heyButton.hidden = true
+        heyButton.isHidden = true
         patternImage.alpha = 0.0
         
-        let attributes = [NSFontAttributeName:font, NSForegroundColorAttributeName: UIColor.whiteColor(), NSStrokeColorAttributeName:UIColor.blackColor(), NSStrokeWidthAttributeName:NSNumber(float: -3.0)]
+        let attributes = [NSFontAttributeName:font, NSForegroundColorAttributeName: UIColor.white, NSStrokeColorAttributeName:UIColor.black, NSStrokeWidthAttributeName:NSNumber(value: -3.0 as Float)]
         let title = NSAttributedString(string: "HEY!", attributes: attributes)
         heyLabel.attributedText = title
         
@@ -54,7 +54,7 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
     
     // MARK: User actions
     
-    @IBAction func heyButtonTapped(sender: AnyObject) {
+    @IBAction func heyButtonTapped(_ sender: AnyObject) {
         guard let player = heyPlayer else {
             return
         }
@@ -75,13 +75,13 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
 
     func pulse() {
         weak var weakSelf = self
-        UIView.animateWithDuration(0.3125, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
+        UIView.animate(withDuration: 0.3125, delay: 0.0, options: [UIViewAnimationOptions.autoreverse, UIViewAnimationOptions.repeat], animations: {
             weakSelf?.tintedView.alpha = 0.25
-            weakSelf?.heyLabel.transform = CGAffineTransformMakeScale(1.1, 1.1)
+            weakSelf?.heyLabel.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         }, completion: nil)
         
         currentColor = UIColor.heyYellow()
-        colorTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        colorTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
         fadeVectorImageInOut()
         
@@ -89,10 +89,10 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
     
     func fadeVectorImageInOut() {
         weak var weakSelf = self
-        UIView.animateWithDuration(2.5, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: {
+        UIView.animate(withDuration: 2.5, delay: 0.0, options: [UIViewAnimationOptions.autoreverse, UIViewAnimationOptions.repeat], animations: {
             weakSelf?.patternImage.alpha = 0.2
             }, completion: nil)
-        imageTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(self.setPatternImage), userInfo: nil, repeats: true)
+        imageTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.setPatternImage), userInfo: nil, repeats: true)
     }
     
     func setPatternImage() {
@@ -111,7 +111,7 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
     func update() {
         getNextColor()
         weak var weakSelf = self
-        UIView.animateWithDuration(2.5, animations: {
+        UIView.animate(withDuration: 2.5, animations: {
             weakSelf?.view.backgroundColor = weakSelf?.currentColor
         })
     }
@@ -140,10 +140,10 @@ class MainViewController: UIViewController, HeyPlayerDelegate {
         patternImage.layer.removeAllAnimations()
         patternImage.alpha = 0.0
         heyLabel.layer.removeAllAnimations()
-        heyLabel.transform = CGAffineTransformIdentity
+        heyLabel.transform = CGAffineTransform.identity
         currentColor = UIColor.heyYellow()
         weak var weakSelf = self
-        UIView.animateWithDuration(1.25, animations: {
+        UIView.animate(withDuration: 1.25, animations: {
             weakSelf?.view.backgroundColor = weakSelf?.currentColor
         })
         
